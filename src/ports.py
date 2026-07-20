@@ -4,17 +4,16 @@ import os
 port_dict = {}
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-SERVICES_FILE = os.path.join(BASE_DIR, "services.txt")
+SERVICES_FILE = os.path.join(BASE_DIR, "services", "services.txt")
 
-def load_services_file(filename="services.txt"):
+def load_services_file(filename=SERVICES_FILE):
     with open(filename, 'r') as file:
         for line in file:
             line = line.strip()
             
-            # Skip empty lines or comments
             if not line or line.startswith('#'):
                 continue
-            # Split the line into its parts
+            
             parts = line.split()
             if len(parts) >= 2:
                 service_name = parts[0]
